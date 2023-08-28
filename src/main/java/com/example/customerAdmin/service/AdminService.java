@@ -27,6 +27,10 @@ public class AdminService {
 
     Gson gson = new Gson();
 
+    public void invalidateAuthToken() {
+        authTokenManager.setAuthToken(null);
+    }
+
     public List<User> getAllUsers() {
         String getAllUsersUri = baseUrl.concat("?cmd=get_customer_list");
         HttpHeaders headers = new HttpHeaders();

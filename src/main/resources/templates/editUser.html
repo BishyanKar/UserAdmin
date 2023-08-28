@@ -39,7 +39,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="editModalLabel">Edit Customer</h5>
-                        <a href="/admin/users" type="button" class="close" aria-label="Close">
+                        <a onclick="history.back();" type="button" class="close" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </a>
                     </div>
@@ -79,7 +79,7 @@
                                 <input type="text" class="form-control" id="phoneEdit" placeholder="Enter Phone" th:value="${user.phone}" th:field="*{phone}">
                             </div>
                             <div class="modal-footer">
-                                <a href="/admin/users" type="button" class="btn btn-secondary" data-dismiss="modal">Close</a>
+                                <a onclick="history.back();" type="button" class="btn btn-secondary" data-dismiss="modal">Close</a>
                                 <button type="submit" class="btn btn-primary" id="editUserButton">Update User</button>
                             </div>
                         </form>

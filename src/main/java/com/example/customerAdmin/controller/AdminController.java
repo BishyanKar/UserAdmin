@@ -24,6 +24,7 @@ public class AdminController {
     public String getAllUsers(Model model) {
         List<User> userList = adminService.getAllUsers();
         if (Objects.isNull(userList)) {
+            adminService.invalidateAuthToken();
             return "redirect:/login";
         }
         model.addAttribute("userList", userList);
@@ -35,6 +36,7 @@ public class AdminController {
     public String addUser(@ModelAttribute User user, Model model) {
         String response = adminService.addUser(user);
         if (Objects.isNull(response)) {
+            adminService.invalidateAuthToken();
             return "redirect:/login";
         }
         return "redirect:/admin/users";
@@ -50,6 +52,7 @@ public class AdminController {
     public String updateUser(@ModelAttribute User user) {
         String response = adminService.updateUser(user);
         if (Objects.isNull(response)) {
+            adminService.invalidateAuthToken();
             return "redirect:/login";
         }
         return "redirect:/admin/users";
@@ -59,6 +62,7 @@ public class AdminController {
     public String deleteUser(@RequestParam("id") String uuid) {
         String response = adminService.deleteUser(uuid);
         if (Objects.isNull(response)) {
+            adminService.invalidateAuthToken();
             return "redirect:/login";
         }
         return "redirect:/admin/users";

@@ -17,6 +17,9 @@ public class LoginController {
 
     @GetMapping("/login")
     public String getLoginForm(Model model) {
+        if (loginService.authorize()) {
+            return "redirect:/admin/users";
+        }
         model.addAttribute("loginForm", new LoginForm());
         return "login";
     }

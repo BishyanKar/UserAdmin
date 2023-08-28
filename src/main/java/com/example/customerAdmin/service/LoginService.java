@@ -27,11 +27,14 @@ public class LoginService {
 
     Gson gson = new Gson();
 
-    public void authenticateAndSetAuthToken(String email, String password) {
-
+    public boolean authorize() {
         if (authTokenManager.getAuthToken() != null) {
-            return;
+            return true;
         }
+        return false;
+    }
+
+    public void authenticateAndSetAuthToken(String email, String password) {
 
         String loginUri = "https://qa2.sunbasedata.com/sunbase/portal/api/assignment_auth.jsp";
         HashMap<String, String> requestBody = new HashMap<>();
