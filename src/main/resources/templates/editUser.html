@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <title>Edit Customer</title>
+
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+            .container {
+                max-width: 1000px;
+                margin: 20px auto;
+                position: relative;
+            }
+            th, td {
+                border: 1px solid #ccc;
+                padding: 8px;
+                text-align: left;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Edit User Modal Sheet -->
+        <div>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Edit Customer</h5>
+                        <a href="/admin/users" type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </a>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/admin/users/update" method="post" th:object="${user}">
+                            <input type="hidden" th:field="*{uuid}" th:value="${user.getUuid}" />
+                            <div class="form-group">
+                                <label for="firstNameEdit">First Name</label>
+                                <input type="text" class="form-control" id="firstNameEdit" placeholder="Enter First Name" th:value="${user.firstName}" th:field="*{firstName}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastNameEdit">Last Name</label>
+                                <input type="text" class="form-control" id="lastNameEdit" placeholder="Enter Last Name" th:value="${user.lastName}" th:field="*{lastName}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="streetEdit">Street</label>
+                                <input type="text" class="form-control" id="streetEdit" placeholder="Enter Street" th:value="${user.street}" th:field="*{street}">
+                            </div>
+                            <div class="form-group">
+                                <label for="addressEdit">Street</label>
+                                <input type="text" class="form-control" id="addressEdit" placeholder="Enter Address" th:value="${user.address}" th:field="*{address}">
+                            </div>
+                            <div class="form-group">
+                                <label for="cityEdit">City</label>
+                                <input type="text" class="form-control" id="cityEdit" placeholder="Enter City" th:value="${user.city}" th:field="*{city}">
+                            </div>
+                            <div class="form-group">
+                                <label for="stateEdit">State</label>
+                                <input type="text" class="form-control" id="stateEdit" placeholder="Enter State" th:value="${user.state}" th:field="*{state}">
+                            </div>
+                            <div class="form-group">
+                                <label for="emailEdit">Email</label>
+                                <input type="email" class="form-control" id="emailEdit" placeholder="Enter Email" th:value="${user.email}" th:field="*{email}">
+                            </div>
+                            <div class="form-group">
+                                <label for="phoneEdit">Phone</label>
+                                <input type="text" class="form-control" id="phoneEdit" placeholder="Enter Phone" th:value="${user.phone}" th:field="*{phone}">
+                            </div>
+                            <div class="modal-footer">
+                                <a href="/admin/users" type="button" class="btn btn-secondary" data-dismiss="modal">Close</a>
+                                <button type="submit" class="btn btn-primary" id="editUserButton">Update User</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
